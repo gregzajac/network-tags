@@ -1,7 +1,3 @@
-Uruchomienie dockera z katalogu głownego projektu:
-sudo FLASK_ENV="development" FLASK_CONFIG="development" docker-compose -f docker/development.yml build web
-
-
 # Network-tags
 
 Usługa REST zaimplementowana w Python 3.8 z wykorzystaniem frameworku Flask. Środowisko developerskie działa pod adresem http://localhost:5000, natomiast produkcyjne (z serwerem gunicorn) pod adresem http://0.0.0.0:8000. Środowiska zbudowane są z wykorzystaniem narzędzia docker-compose
@@ -57,7 +53,6 @@ usunięcie danych z bazy: ./manage.py flask db-manage remove-data
 Testowanie odbywa się na lokalnej aplikacji, podłączanej do uruchomionego w kontenerze środowiska z bazą PostgreSQL i Memcached.
 
 Testowanie uruchamimy wykorzystując również manage.py
-Extra note for setup
 ```buildoutcfg
 ./manage.py test
 
