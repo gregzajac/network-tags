@@ -1,0 +1,46 @@
+version: '3.7'
+
+services:
+  db:
+    image: postgres:12-alpine
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    ports:
+      - "${POSTGRES_PORT}:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  memcached:
+    image: memcached:alpine
+
+  web:
+    build:
+      context: ../
+      dockerfile: docker/Dockerfile.production
+    environment:
+      FLASK_ENV: ${FLASK_ENV}
+      FLASK_CONFIG: ${FLASK_CONFIG}
+      APPLICATION_DB: ${APPLICATION_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_HOSTNAME: "db"
+      POSTGRES_PORT: ${POSTGRES_PORT}
+      MEMCACHED_SERVER: memcached
+      CACHE_DEFAULT_TIMEOUT: ${CACHE_DEFAULT_TIMEOUT}
+      SECRET_KEY: ${SECRET_KEY}
+      DB_JSON_PATH: ${DB_JSON_PATH}
+      ENDPOINT_CASES_PATH: ${ENDPOINT_CASES_PATH}
+      LOG_FILE_PATH: ${LOG_FILE_PATH}
+      LOG_BACKUP_COUNT: ${LOG_BACKUP_COUNT}
+      LOG_MAX_BYTES: ${LOG_MAX_BYTES}
+      LOG_LEVEL: ${LOG_LEVEL}
+    command: gunicorn -w 4 -b 0.0.0.0 wsgi:app
+    volumes:
+      - ../:/app
+    ports:
+      - "8000:8000"
+
+volumes:
+  pgdata:
