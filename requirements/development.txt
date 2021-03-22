@@ -1,0 +1,6 @@
+-r testing.txt
+
+black
+isort
+wheel
+docker-compose

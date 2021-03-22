@@ -1,0 +1,70 @@
+[
+    {
+        "name": "FLASK_ENV",
+        "value": "development"
+    },
+    {
+        "name": "FLASK_CONFIG",
+        "value": "development"
+    },
+    {
+        "name": "POSTGRES_DB",
+        "value": "postgres"
+    },
+    {
+        "name": "POSTGRES_USER",
+        "value": "postgres"
+    },
+    {
+        "name": "POSTGRES_HOSTNAME",
+        "value": "localhost"
+    },
+    {
+        "name": "POSTGRES_PORT",
+        "value": "5432"
+    },
+    {
+        "name": "POSTGRES_PASSWORD",
+        "value": "postgres"
+    },
+    {
+        "name": "APPLICATION_DB",
+        "value": "db_tags"
+    },
+    {
+        "name": "SECRET_KEY",
+        "value": "Developmen$tSecre$tKey"
+    },
+    {
+        "name": "MEMCACHED_SERVER",
+        "value": "127.0.0.1"
+    },
+    {
+        "name": "CACHE_DEFAULT_TIMEOUT",
+        "value": "300"
+    },
+    {
+        "name": "DB_JSON_PATH",
+        "value": "./samples/db1000.json"
+    },
+    {
+        "name": "ENDPOINT_CASES_PATH",
+        "value": "./tests/endpoint_cases.json"
+    },
+    {
+        "name": "LOG_FILE_PATH",
+        "value": "./logs/development.log"
+    },
+    {
+        "name": "LOG_BACKUP_COUNT",
+        "value": "1"
+    },
+    {
+        "name": "LOG_MAX_BYTES",
+        "value": "1000000"
+    },
+    {
+        "name": "LOG_LEVEL",
+        "value": "DEBUG"
+    }
+]

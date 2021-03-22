@@ -1,0 +1,19 @@
+[
+    {
+        "url": "http://127.0.0.1:5000/ip-tags/192.0.2.9",
+        "expected_data": [
+            "123 & abc & XQZ!",
+            "{$(\n a-tag\n)$}"
+        ]
+    },
+    {
+        "url": "http://127.0.0.1:5000/ip-tags/192.0.2.20",
+        "expected_data": [
+            "{$(\n a-tag\n)$}"
+        ]
+    },
+    {
+        "url": "http://127.0.0.1:5000/ip-tags/192.1.2.20",
+        "expected_data": []
+    }
+]

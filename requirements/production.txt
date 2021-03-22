@@ -1,0 +1,6 @@
+Flask
+Flask-Sqlalchemy
+psycopg2-binary
+Flask-Migrate
+pymemcache
+gunicorn
