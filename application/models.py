@@ -12,11 +12,6 @@ db = SQLAlchemy()
 migrate = Migrate()
 
 
-def get_tags_from_cache(ip: str) -> str:
-    result = ""
-    pass
-
-
 class NetworkTag(db.Model):
     """
     NetworkTag model with two fields:
