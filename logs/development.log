@@ -1,0 +1,12 @@
+[2021-03-25T14:40:48] INFO [application.fill_in_cache:21] Data from `network_tags` has been initially cached
+[2021-03-25T14:40:48] INFO [werkzeug._log:113] 127.0.0.1 - - [25/Mar/2021 14:40:48] "[37mGET /ip-tags-report/204.0.244.1 HTTP/1.1[0m" 200 -
+[2021-03-25T14:52:47] INFO [werkzeug._log:113]  * Restarting with stat
+[2021-03-25T14:53:43] INFO [werkzeug._log:113]  * Detected change in '/home/grzegorzzajac/repos/ip_tags/application/models.py', reloading
+[2021-03-25T14:53:43] INFO [werkzeug._log:113]  * Restarting with stat
+[2021-03-25T14:54:42] INFO [werkzeug._log:113]  * Detected change in '/home/grzegorzzajac/repos/ip_tags/application/models.py', reloading
+[2021-03-25T14:54:42] INFO [werkzeug._log:113]  * Restarting with stat
+[2021-03-25T14:55:24] INFO [werkzeug._log:113]  * Detected change in '/home/grzegorzzajac/repos/ip_tags/application/models.py', reloading
+[2021-03-25T14:55:24] INFO [werkzeug._log:113]  * Restarting with stat
+[2021-03-25T14:55:40] INFO [application.fill_in_cache:21] Data from `network_tags` has been initially cached
+[2021-03-25T14:55:40] INFO [werkzeug._log:113] 127.0.0.1 - - [25/Mar/2021 14:55:40] "[37mGET /ip-tags-report/204.0.244.1 HTTP/1.1[0m" 200 -
+[2021-03-25T14:55:52] INFO [werkzeug._log:113] 127.0.0.1 - - [25/Mar/2021 14:55:52] "[37mGET /ip-tags-report/204.0.244.1 HTTP/1.1[0m" 200 -
