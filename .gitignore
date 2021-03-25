@@ -6,5 +6,5 @@ __pycache__/
 .coverage
 .cache
 venv/
-logs/*.log 
+logs/*.log
 
