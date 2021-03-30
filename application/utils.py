@@ -113,10 +113,10 @@ def setup_cache(app: Flask) -> None:
     """
     Initiates memcached caching
     """
-    try:
 
+    try:
         app.cache = Client(
-            app.config["MEMCACHED_SERVER"] + "1",
+            app.config["MEMCACHED_SERVER"],
             serde=PickleSerde(pickle_version=2),
             connect_timeout=5,
             timeout=1,

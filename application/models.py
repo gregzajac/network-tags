@@ -69,7 +69,7 @@ class NetworkTag(db.Model):
         list_of_tags_list = [json.loads(el) for el in tags_dict.values()]
 
         sorted_unique_tags_list = json.dumps(
-            sorted(list(set(list(chain(*list_of_tags_list)))))
+            sorted(set(chain.from_iterable(list_of_tags_list)))
         )
 
         return json.loads(sorted_unique_tags_list)
