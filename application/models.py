@@ -58,10 +58,9 @@ class NetworkTag(db.Model):
 
         if not tags_dict:
             raw_objects = NetworkTag._get_many_objects(ip_binary_parts)
-
-            tags_dict = {}
-            for el in raw_objects:
-                tags_dict[el.binary_network_part] = el.tags
+            tags_dict = dict(
+                map(lambda x: (x.binary_network_part, x.tags), raw_objects)
+            )
 
             current_app.cache.set_many(
                 tags_dict, expire=current_app.config["CACHE_DEFAULT_TIMEOUT"]
@@ -70,7 +69,7 @@ class NetworkTag(db.Model):
         list_of_tags_list = [json.loads(el) for el in tags_dict.values()]
 
         sorted_unique_tags_list = json.dumps(
-            sorted(list(set(list(chain(*list_of_tags_list)))))
+            sorted(set(chain.from_iterable(list_of_tags_list)))
         )
 
         return json.loads(sorted_unique_tags_list)
@@ -83,8 +82,9 @@ class NetworkTag(db.Model):
 
         all_network_tag_objects = NetworkTag.query.limit(records_limit).all()
 
-        data = {}
-        for obj in all_network_tag_objects:
-            data[obj.binary_network_part] = obj.tags
-        if data:
+        if all_network_tag_objects:
+            data = dict(
+                map(lambda x: (x.binary_network_part, x.tags), all_network_tag_objects)
+            )
+
             current_app.cache.set_many(data)

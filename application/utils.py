@@ -1,11 +1,11 @@
 import json
 import logging
 import re
-from itertools import chain, groupby
+from itertools import groupby
 from logging.handlers import RotatingFileHandler
 from pathlib import Path
 
-from flask import Flask, current_app
+from flask import Flask
 from pymemcache.client.base import Client
 from pymemcache.serde import PickleSerde
 
@@ -76,10 +76,9 @@ def prepare_data_to_db(path: Path) -> list:
 
     # grouping `tags` in data by `binary_network_part` attribute
     # tags in lists are unique, sorted and serialized
-    sort_func = lambda x: x["binary_network_part"]
-    data.sort(key=sort_func)
-    for key, group in groupby(data, key=sort_func):
-        sorted_unique_tags_list = sorted(list(set([el["tag"] for el in group])))
+    data.sort(key=lambda x: x["binary_network_part"])
+    for key, group in groupby(data, key=lambda x: x["binary_network_part"]):
+        sorted_unique_tags_list = sorted(set([el["tag"] for el in group]))
 
         prepared_data.append(
             {"binary_network_part": key, "tags": json.dumps(sorted_unique_tags_list)}
@@ -114,8 +113,8 @@ def setup_cache(app: Flask) -> None:
     """
     Initiates memcached caching
     """
-    try:
 
+    try:
         app.cache = Client(
             app.config["MEMCACHED_SERVER"],
             serde=PickleSerde(pickle_version=2),
@@ -124,5 +123,5 @@ def setup_cache(app: Flask) -> None:
             ignore_exc=True,
         )
 
-    except:
+    except Exception:
         app.logger.error("Error in setup cache", exc_info=True)

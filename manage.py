@@ -156,7 +156,7 @@ def run_sql(statements: list) -> None:
         cursor.close()
         conn.commit()
 
-    except:
+    except Exception:
         manage_logger.error("Unexpected error", exc_info=True)
 
 
@@ -188,7 +188,7 @@ def create_db() -> None:
 
     except psycopg2.errors.DuplicateDatabase:
         print(f"The database {os.environ.get('APPLICATION_DB')} already exists")
-    except:
+    except Exception:
         manage_logger.error("Database has not been created!", exc_info=True)
         sys.exit(1)
 

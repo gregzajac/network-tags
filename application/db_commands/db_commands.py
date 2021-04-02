@@ -45,7 +45,7 @@ def add_data():
         )
         current_app.logger.info(msg)
 
-    except:
+    except Exception:
         msg = (
             "Error during importing data to database"
             + f"(file: {current_app.config['DB_JSON_PATH']})"
@@ -68,4 +68,3 @@ def remove_data():
     except Exception as exc:
         msg = f"Error during removing data from the database: {exc}"
         current_app.logger.error(msg)
-        print(msg)
