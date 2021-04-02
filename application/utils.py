@@ -78,7 +78,7 @@ def prepare_data_to_db(path: Path) -> list:
     # tags in lists are unique, sorted and serialized
     data.sort(key=lambda x: x["binary_network_part"])
     for key, group in groupby(data, key=lambda x: x["binary_network_part"]):
-        sorted_unique_tags_list = sorted(list(set([el["tag"] for el in group])))
+        sorted_unique_tags_list = sorted(set([el["tag"] for el in group]))
 
         prepared_data.append(
             {"binary_network_part": key, "tags": json.dumps(sorted_unique_tags_list)}
