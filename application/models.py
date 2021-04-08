@@ -68,11 +68,7 @@ class NetworkTag(db.Model):
 
         list_of_tags_list = [json.loads(el) for el in tags_dict.values()]
 
-        sorted_unique_tags_list = json.dumps(
-            sorted(set(chain.from_iterable(list_of_tags_list)))
-        )
-
-        return json.loads(sorted_unique_tags_list)
+        return sorted(set(chain.from_iterable(list_of_tags_list)))
 
     @staticmethod
     def fill_in_cache(records_limit: int) -> None:
